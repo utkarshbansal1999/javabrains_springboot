@@ -1,12 +1,10 @@
 package com.example.javabrains_springboot.topic;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TopicController {
@@ -27,7 +25,7 @@ public class TopicController {
     }
 
     @GetMapping("/topics/{topicid}")
-    public Topic getTopics(@PathVariable(value = "topicid") String topicid)
+    public Optional<Topic> getTopics(@PathVariable(value = "topicid") String topicid)
     {
         return topicService.getTopic(topicid);
         //return ratings.stream().filter(topic -> topic.getId().equals(topicid)).findFirst().get();
